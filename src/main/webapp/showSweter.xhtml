@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable value="#{sweterBean.allSweter}" var="item">
+				<f:facet name="header">#{msg.sweterAllLabel}</f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.sweterName}</f:facet>
+					<h:outputText value="#{item.name}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.sweterSize}</f:facet>
+					<h:outputText value="#{item.size}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.sweterColor}</f:facet>
+					<h:outputText value="#{item.color}" />
+				</h:column>
+				
+				<!-- <h:column>
+					<f:facet name="header">Owner</f:facet>
+					<h:outputText value="#{item.owner}" />
+				</h:column> -->
+
+				<h:column>
+					<f:facet name="header">#{msg.action}</f:facet>
+					<h:commandLink value="#{msg.actionDelete}"
+						action="#{sweterBean.deleteSweter}" />
+					<h:commandLink value=" Owner Details " action="#{sweterBean.showDetails}"/>
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

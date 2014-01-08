@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="content">
+		<h:form id="sweterForm">
+			<h:panelGrid columns="2">
+
+				<h:outputText value="#{msg.sweterName}" />
+				<h:inputText id="name" value="#{sweterBean.sweter.name}"
+					required="#{true}" />
+
+				<h:outputText value="#{msg.sweterSize}" />
+				<h:inputText id="size" value="#{sweterBean.sweter.size}" />
+
+				<h:outputText value="#{msg.sweterColor}" />
+				<h:inputText id="color" value="#{sweterBean.sweter.color}" />
+				
+	
+
+			</h:panelGrid>
+
+			<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{sweterBean.addSweter}" />
+
+			<h:panelGrid>
+				<h:messages for="" />
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
