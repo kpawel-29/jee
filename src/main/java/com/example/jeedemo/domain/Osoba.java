@@ -41,7 +41,7 @@ public class Osoba {
 		this.firstName = firstName;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="owner")
 	public List<Sweter> getSwetry() {
 		return swetry;
 	}

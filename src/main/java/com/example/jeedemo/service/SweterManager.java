@@ -25,25 +25,7 @@ public class SweterManager {
 	public void addSweter(Sweter sweter) {
 		
 		sweter.setId(null);
-		//osoba.setId(null);
-		//addon.setId(null);
-		//sm.persist(addon);
-		//sm.persist(osoba);
-		//sweter.setOwner(osoba);
-		
 		sm.persist(sweter);
-/*
-		List<Sweter> swetry = new ArrayList<Sweter>();
-		swetry.add(sweter);
-		
-	
-		Osoba bolek = new Osoba();
-		bolek.setFirstName("Bolek");
-		sm.persist(bolek);
-		
-		Osoba lolek = new Osoba();
-		lolek.setFirstName("Lolek");
-		sm.persist(lolek);*/
 	}
 	
 
@@ -56,21 +38,26 @@ public class SweterManager {
 	public List<Sweter> getAllSweter() {
 		return sm.createNamedQuery("sweter.all").getResultList();
 	}
+	@SuppressWarnings("unchecked")
+	public List<Sweter> getAvailableSweter() {
+		return sm.createNamedQuery("sweter.free").getResultList();
+	}
 
-
-	public List<Osoba> getOwnedSweter(Sweter sweter) {
+	public Osoba getOwnerSweter(Sweter sweter) {
 		sweter = sm.find(Sweter.class, sweter.getId());
-		// lazy loading here - try this code without this (shallow) copying
-		List<Osoba> osoby = new ArrayList<Osoba>(sweter.getOwner());
-		return osoby;
+		
+		Osoba osoba = new Osoba();
+		osoba = sweter.getOwner();
+		return osoba;
 	}
 	
 	public void connect(Long sweterId, Long osobaId) {
 
 		Sweter sweter = sm.find(Sweter.class, sweterId);
 		Osoba osoba = sm.find(Osoba.class, osobaId);
-		
-		sweter.getOwner().add(osoba);
+		sweter.setGotOwner(true);
+		osoba.getSwetry().add(sweter);
+		sweter.setOwner(osoba);
 	}
 
 }

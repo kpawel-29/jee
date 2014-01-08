@@ -8,18 +8,18 @@
 	<ui:define name="content">
 		<h:form>
 			<h:dataTable
-				value="#{sweterBean.sweterOwner}" var="item">
-				<f:facet name="header">Owners</f:facet>
+				value="#{osobaBean.ownedSweter}" var="item">
+				<f:facet name="header">Sweter</f:facet>
 				<h:column>
 					<f:facet name="header">Name</f:facet>
-					<h:outputText value="#{item.firstName}" />
+					<h:outputText value="#{item.name}" />
 				</h:column>
 
 
 				<h:column>
 					<f:facet name="header">#{msg.action}</f:facet>
 					<h:commandLink value="#{msg.actionDelete}"
-						action="#{personBean.disposeCar}" />
+						action="#{osobaBean.disposeSweter}" />
 				</h:column>
 
 			</h:dataTable>

@@ -35,6 +35,10 @@ public class ConnectFormBean implements Serializable {
 		return osobaId;
 	}
 
+	public List<Sweter> getAvailableSweter() {
+		return sm.getAvailableSweter();
+	}
+	
 	public void setOsobaId(Long osobaId) {
 		this.osobaId = osobaId;
 	}

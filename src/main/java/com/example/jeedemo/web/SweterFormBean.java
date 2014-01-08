@@ -10,7 +10,11 @@ import javax.inject.Named;
 import com.example.jeedemo.domain.Addon;
 import com.example.jeedemo.domain.Car;
 import com.example.jeedemo.domain.Osoba;
+import com.example.jeedemo.domain.Person;
 import com.example.jeedemo.domain.Sweter;
+import com.example.jeedemo.service.OsobaManager;
+import com.example.jeedemo.service.PersonManager;
+import com.example.jeedemo.service.SellingManager;
 import com.example.jeedemo.service.SweterManager;
 
 @SessionScoped
@@ -19,20 +23,22 @@ public class SweterFormBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	
+
+
 	private Sweter sweter = new Sweter();
-	//private Osoba osoba = new Osoba();
-	//private Addon addon = new Addon();
 	private ListDataModel<Sweter> sweters = new ListDataModel<Sweter>();
 	
 	private ListDataModel<Osoba> sweterOwner = new ListDataModel<Osoba>();
 	
 	private Sweter sweterToShow;
+	private Osoba osobaToShow;
 
 	@Inject
 	private SweterManager sm;
 	
-	
-
+	@Inject
+	private OsobaManager om;
 	
 	public Sweter getSweter() {
 		return sweter;
@@ -42,8 +48,14 @@ public class SweterFormBean implements Serializable {
 		this.sweter = sweter;
 	}
 	
-	public ListDataModel<Osoba> getsweterOwner() {
-		sweterOwner.setWrappedData(sm.getOwnedSweter(sweterToShow));
+
+	/*public ListDataModel<Sweter> getSweterFromOwner() {
+		sweterOwner.setWrappedData(sm.getOwnerSweter(sweterToShow));
+		return sweterOwner;
+	}*/
+	
+	public ListDataModel<Osoba> getSweterOwner() {
+		sweterOwner.setWrappedData(sm.getOwnerSweter(sweterToShow));
 		return sweterOwner;
 	}
 	
@@ -51,6 +63,8 @@ public class SweterFormBean implements Serializable {
 		sweters.setWrappedData(sm.getAllSweter());
 		return sweters;
 	}
+	
+	
 	
 	public String showDetails() {
 		sweterToShow = sweters.getRowData();

@@ -13,7 +13,7 @@
 
 				<h:outputText value=" Sweter " />
 				<h:selectOneMenu value="#{connectBean.sweterId}">
-					<f:selectItems value="#{connectBean.allSweter}" var="sweter"
+					<f:selectItems value="#{connectBean.availableSweter}" var="sweter"
 						itemValue="#{sweter.id}" itemLabel="#{sweter.name}" />
 				</h:selectOneMenu>
 

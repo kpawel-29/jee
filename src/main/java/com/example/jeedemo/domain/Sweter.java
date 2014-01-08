@@ -1,37 +1,30 @@
 package com.example.jeedemo.domain;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({ 
-	@NamedQuery(name = "sweter.all", query = "Select s from Sweter s")
+	@NamedQuery(name = "sweter.all", query = "Select s from Sweter s"),
+	@NamedQuery(name = "sweter.free", query = "Select s from Sweter s where s.gotOwner = false")
 })
 public class Sweter {
 
 	private Long id;
-	private String name = "unknown";
-	private int size = 0;
+	private String name = "kolorowy";
+	private int size = 20;
 	private String color = "blue";
+	private boolean gotOwner = false;
 	
-	//private Addon addon;
+	private Osoba owner;
 	
-	private List<Osoba> owner;
-	/*private String[] osobaList = {
-             "Marek", "Janek", "Bolek", "Marysia"                        
-	};*/
 	
-	@Id
+		@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
@@ -58,11 +51,19 @@ public class Sweter {
 		this.color = color;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	public List<Osoba> getOwner() {
+	
+	public boolean isGotOwner() {
+		return gotOwner;
+	}
+	public void setGotOwner(boolean gotOwner) {
+		this.gotOwner = gotOwner;
+	}
+	
+	@ManyToOne
+	public Osoba getOwner() {
 		return owner;
 	}
-	public void setOwner(List<Osoba> owner) {
+	public void setOwner(Osoba owner) {
 		this.owner = owner;
 	}
 		
