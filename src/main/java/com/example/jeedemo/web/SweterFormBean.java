@@ -54,10 +54,10 @@ public class SweterFormBean implements Serializable {
 		return sweterOwner;
 	}*/
 	
-	public ListDataModel<Osoba> getSweterOwner() {
+	/*public ListDataModel<Osoba> getSweterOwner() {
 		sweterOwner.setWrappedData(sm.getOwnerSweter(sweterToShow));
 		return sweterOwner;
-	}
+	}*/
 	
 	public ListDataModel<Sweter> getAllSweter() {
 		sweters.setWrappedData(sm.getAllSweter());

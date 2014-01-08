@@ -43,13 +43,7 @@ public class SweterManager {
 		return sm.createNamedQuery("sweter.free").getResultList();
 	}
 
-	public Osoba getOwnerSweter(Sweter sweter) {
-		sweter = sm.find(Sweter.class, sweter.getId());
-		
-		Osoba osoba = new Osoba();
-		osoba = sweter.getOwner();
-		return osoba;
-	}
+	
 	
 	public void connect(Long sweterId, Long osobaId) {
 
