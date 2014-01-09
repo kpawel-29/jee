@@ -24,7 +24,6 @@ public class PersonFormBean implements Serializable {
 	private Person personToShow = new Person();
 	private ListDataModel<Car> ownedCars = new ListDataModel<Car>();
 
-
 	@Inject
 	private PersonManager pm;
 	

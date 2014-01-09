@@ -21,11 +21,23 @@
 			<h:outputText value="Dodaj osobe" />
 		  </h:commandLink>
 		</li>
+				<li>
+		  <h:commandLink action="addAddon?faces-redirect=true">
+			 <h:outputText value="Dodaj dodatki" />
+		  </h:commandLink>
+		</li>
+		<li></li>
 		<li>
 		  <h:commandLink action="addSwetertoOwner?faces-redirect=true">
 			<h:outputText value="Przypisz sweter" />
 		  </h:commandLink>
 		</li>
+				<li>
+		  <h:commandLink action="addSwetertoAddon?faces-redirect=true">
+			 <h:outputText value="Przypisz Dodatki" />
+		  </h:commandLink>
+		</li>
+		<li></li>
 		<li>
 		  <h:commandLink action="showSweter?faces-redirect=true">
 			 <h:outputText value="#{msg.sweterAllLabel}" />
@@ -36,6 +48,13 @@
 			 <h:outputText value="Pokaz osoby" />
 		  </h:commandLink>
 		</li>
+				<li>
+		  <h:commandLink action="showAddon?faces-redirect=true">
+			 <h:outputText value="Pokaz dodatki" />
+		  </h:commandLink>
+		</li>
+		
+		
 	</ul>
    </h:form>
   </div>

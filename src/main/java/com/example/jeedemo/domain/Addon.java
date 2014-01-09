@@ -8,18 +8,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 
 @Entity
+@NamedQueries({ 
+	@NamedQuery(name = "addon.all", query = "Select a from Addon a")
+	})
 public class Addon {
 
 	private Long id;
-	private String addonName;
+	private String addonName  ="kieszenie";
 	
 	private List<Sweter> swetry = new ArrayList<Sweter>();
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -35,8 +43,11 @@ public class Addon {
 	public void setAddonName(String addonName) {
 		this.addonName = addonName;
 	}
-
-	@OneToMany(cascade = CascadeType.ALL)
+//zamienione miejscami wzgledem przykladu addon_id i sweter_id
+	@ManyToMany(cascade = {CascadeType.ALL})
+	@JoinTable(name="SWETER_ADDON", 
+				joinColumns={@JoinColumn(name="ADDON_ID")},
+				inverseJoinColumns={@JoinColumn(name="SWETER_ID")})
 	public List<Sweter> getSwetry() {
 		return swetry;
 	}

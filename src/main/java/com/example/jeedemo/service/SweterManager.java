@@ -19,15 +19,11 @@ public class SweterManager {
 
 	@PersistenceContext
 	EntityManager sm;
-	
-	
 
 	public void addSweter(Sweter sweter) {
-		
 		sweter.setId(null);
 		sm.persist(sweter);
 	}
-	
 
 	public void deleteSweter(Sweter sweter) {
 		sweter = sm.find(Sweter.class, sweter.getId());
@@ -42,8 +38,6 @@ public class SweterManager {
 	public List<Sweter> getAvailableSweter() {
 		return sm.createNamedQuery("sweter.free").getResultList();
 	}
-
-	
 	
 	public void connect(Long sweterId, Long osobaId) {
 
@@ -53,5 +47,21 @@ public class SweterManager {
 		osoba.getSwetry().add(sweter);
 		sweter.setOwner(osoba);
 	}
+/////////////////////////////////////////////////////////////////////	
+	//ok
+		public void addAddon(Addon addon) {
+			addon.setId(null);
+			sm.persist(addon);
+		}
+	//ok
+		public void deleteAddon(Addon addon) {
+			addon = sm.find(Addon.class, addon.getId());
+			sm.remove(addon);
+		}
+	//ok
+		@SuppressWarnings("unchecked")
+		public List<Addon> getAllAddon() {
+			return sm.createNamedQuery("addon.all").getResultList();
+		}
 
 }

@@ -44,13 +44,11 @@ public class OsobaFormBean implements Serializable {
 		osoby.setWrappedData(om.getAllOsoba());
 		return osoby;
 	}
-
 	
 	// Actions
 	public String addOsoba() {
 		om.addOsoba(osoba);
-		return "showOsoba";
-		
+		return "showOsoba";		
 	}
 
 	public String deleteOsoba() {

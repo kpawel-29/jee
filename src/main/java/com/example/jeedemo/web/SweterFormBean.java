@@ -12,6 +12,7 @@ import com.example.jeedemo.domain.Car;
 import com.example.jeedemo.domain.Osoba;
 import com.example.jeedemo.domain.Person;
 import com.example.jeedemo.domain.Sweter;
+import com.example.jeedemo.service.AddonManager;
 import com.example.jeedemo.service.OsobaManager;
 import com.example.jeedemo.service.PersonManager;
 import com.example.jeedemo.service.SellingManager;
@@ -30,52 +31,34 @@ public class SweterFormBean implements Serializable {
 	private ListDataModel<Sweter> sweters = new ListDataModel<Sweter>();
 	
 	private ListDataModel<Osoba> sweterOwner = new ListDataModel<Osoba>();
+	private ListDataModel<Addon> sweterAddons = new ListDataModel<Addon>();
 	
 	private Sweter sweterToShow;
-	private Osoba osobaToShow;
-
-	@Inject
-	private SweterManager sm;
 	
 	@Inject
-	private OsobaManager om;
+	private SweterManager sm;	
+	@Inject
+	private AddonManager am;
 	
+	/////////////////////////////////////////////////////
 	public Sweter getSweter() {
 		return sweter;
 	}
-
 	public void setSweter(Sweter sweter) {
 		this.sweter = sweter;
 	}
-	
-
-	/*public ListDataModel<Sweter> getSweterFromOwner() {
-		sweterOwner.setWrappedData(sm.getOwnerSweter(sweterToShow));
-		return sweterOwner;
-	}*/
-	
-	/*public ListDataModel<Osoba> getSweterOwner() {
-		sweterOwner.setWrappedData(sm.getOwnerSweter(sweterToShow));
-		return sweterOwner;
-	}*/
 	
 	public ListDataModel<Sweter> getAllSweter() {
 		sweters.setWrappedData(sm.getAllSweter());
 		return sweters;
 	}
 	
-	
-	
 	public String showDetails() {
 		sweterToShow = sweters.getRowData();
 		return "details";
 	}
-
-	// Actions
 	public String addSweter() {
-		
 		sm.addSweter(sweter);
-
 		return "showSweter";
 		// return null;
 	}
@@ -84,5 +67,21 @@ public class SweterFormBean implements Serializable {
 		Sweter sweterToDelete = sweters.getRowData();
 		sm.deleteSweter(sweterToDelete);
 		return null;
+	}
+	/////////////////////////////////////////////////////////
+	public ListDataModel<Addon> getSweterAddons() {
+		sweterAddons.setWrappedData(am.getSweterAddons(sweterToShow));
+		return sweterAddons;
+	}
+	
+	public String disposeAddon(){
+		Addon addonToDispose = sweterAddons.getRowData();
+		am.disposeAddon(sweterToShow, addonToDispose);
+		return null;
+	}
+	
+	public String showAddonDetails() {
+		sweterToShow = sweters.getRowData();
+		return "detailsAddon";
 	}
 }

@@ -1,9 +1,13 @@
 package com.example.jeedemo.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -20,11 +24,12 @@ public class Sweter {
 	private int size = 20;
 	private String color = "blue";
 	private boolean gotOwner = false;
-	
 	private Osoba owner;
+	private List<Addon> addony = new ArrayList<Addon>();
 	
 	
-		@Id
+	
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long getId() {
 		return id;
@@ -66,5 +71,14 @@ public class Sweter {
 	public void setOwner(Osoba owner) {
 		this.owner = owner;
 	}
-		
+	
+	@ManyToMany(mappedBy="swetry")
+	public List<Addon> getAddons() {
+		return addony;
+	}
+	public void setAddons(List<Addon> addons) {
+		this.addony = addons;
+	}
+	
+	
 }
