@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="content">
+		<h:form id="connectAddonForm">
+
+			<br/><h:outputLabel><b>Przypisz dodatek do swetra:</b></h:outputLabel>
+			<h:panelGrid columns="2">
+				<h:outputText value=" Sweter " />
+				<h:selectOneMenu value="#{connectAddonBean.sweterId}">
+					<f:selectItems value="#{connectAddonBean.allSweter}" var="sweter"
+						itemValue="#{sweter.id}" itemLabel="#{sweter.name}" />
+				</h:selectOneMenu>
+
+				<h:outputText value=" Dodatek " />
+				<h:selectOneMenu value="#{connectAddonBean.addonId}">
+					<f:selectItems value="#{connectAddonBean.allAddon}" var="addon"
+						itemValue="#{addon.id}" itemLabel="#{addon.addonName}" />
+				</h:selectOneMenu>
+			<h:commandButton value="Przypisz" action="#{connectAddonBean.connectAddon}" />
+			<h:commandButton value="Pokaż osoby" action="showOsoba"/>
+			</h:panelGrid>
+
+
+			<h:outputLabel><b>Przypisz sweter do osoby:</b></h:outputLabel>			
+			<h:panelGrid columns="2">
+				<h:outputText value=" Sweter " />
+				<h:selectOneMenu value="#{connectBean.sweterId}">
+					<f:selectItems value="#{connectBean.availableSweter}" var="sweter"
+						itemValue="#{sweter.id}" itemLabel="#{sweter.name}" />
+				</h:selectOneMenu>
+
+				<h:outputText value=" Osoba " />
+				<h:selectOneMenu value="#{connectBean.osobaId}">
+					<f:selectItems value="#{connectBean.allOsoba}" var="osoba"
+						itemValue="#{osoba.id}" itemLabel="#{osoba.firstName}" />
+				</h:selectOneMenu>
+			<h:commandButton value="Przypisz" action="#{connectBean.connect}" />
+			<h:commandButton value="Pokaż osoby" action="showOsoba"/>
+			</h:panelGrid>
+
+			<h:panelGrid>
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

@@ -59,6 +59,7 @@ public class ConnectAddonFormBean implements Serializable {
 
 	public String connectAddon() {
 		om.connectAddon(sweterId, addonId);
-		return "addSwetertoAddon";
+		//return "addSwetertoAddon";
+		return "connect";
 	}
 }

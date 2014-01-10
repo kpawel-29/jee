@@ -11,7 +11,12 @@
 			<h:outputText value="#{msg.linkHome}" />
 		  </h:commandLink>
 		</li>
-		<li>
+				<li>
+		  <h:commandLink action="add?faces-redirect=true">
+			<h:outputText value="Dodawanie" />
+		  </h:commandLink>
+		</li>
+		<!-- <li>
 		  <h:commandLink action="addSweter?faces-redirect=true">
 			<h:outputText value="#{msg.sweterAddLabel}" />
 		  </h:commandLink>
@@ -25,9 +30,14 @@
 		  <h:commandLink action="addAddon?faces-redirect=true">
 			 <h:outputText value="Dodaj dodatki" />
 		  </h:commandLink>
-		</li>
-		<li></li>
+		</li> -->
+		
 		<li>
+		  <h:commandLink action="connect?faces-redirect=true">
+			<h:outputText value="Przypisanie" />
+		  </h:commandLink>
+		</li>
+		<!-- <li>
 		  <h:commandLink action="addSwetertoOwner?faces-redirect=true">
 			<h:outputText value="Przypisz sweter" />
 		  </h:commandLink>
@@ -36,8 +46,8 @@
 		  <h:commandLink action="addSwetertoAddon?faces-redirect=true">
 			 <h:outputText value="Przypisz Dodatki" />
 		  </h:commandLink>
-		</li>
-		<li></li>
+		</li> -->
+		
 		<li>
 		  <h:commandLink action="showSweter?faces-redirect=true">
 			 <h:outputText value="#{msg.sweterAllLabel}" />

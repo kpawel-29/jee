@@ -57,11 +57,13 @@ public class AddonFormBean implements Serializable {
 	public String showAddonDetails() {
 		addonToShow = addons.getRowData();
 		return "detailsAddon";
+		//return null;
 	}
 
 	public String addAddon() {
 		sm.addAddon(addon);
-		return "showAddon";
+		//return "showAddon";
+		return null;
 	}
 
 }

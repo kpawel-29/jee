@@ -61,6 +61,7 @@ public class ConnectFormBean implements Serializable {
 
 	public String connect() {
 		sm.connect(sweterId, osobaId);
-		return "addSwetertoOwner";
+		//return "addSwetertoOwner";
+		return "connect";
 	}
 }

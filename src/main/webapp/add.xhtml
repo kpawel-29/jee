@@ -8,25 +8,43 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 	<ui:define name="content">
-		<h:form id="personForm">
+		<h:form id="addForm">
+			
+			<b><h:outputLabel>Dodaj sweter:</h:outputLabel></b>
 			<h:panelGrid columns="2">
-
-				<h:outputText value="#{msg.personFirstNameLabel}" />
-				<h:inputText id="firstName" value="#{personBean.person.firstName}"
+				<h:outputText value="#{msg.sweterName}" />
+				<h:inputText id="name" value="#{sweterBean.sweter.name}"
 					required="#{true}" />
 
-				<h:outputText value="#{msg.personPinLabel}" />
-				<h:inputText id="pin" value="#{personBean.person.pin}" />
+				<h:outputText value="#{msg.sweterSize}" />
+				<h:inputText id="size" value="#{sweterBean.sweter.size}" />
 
-				<h:outputText value="Registration date" />
-				<rich:calendar value="#{personBean.person.registrationDate}"
-					id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
-					style="width:200px">
-				</rich:calendar>
+				<h:outputText value="#{msg.sweterColor}" />
+				<h:inputText id="color" value="#{sweterBean.sweter.color}" />
+	
+				<h:commandButton value="#{msg.personFormOKButton}" action="#{sweterBean.addSweter}" />
+				<h:commandButton value="Pokaż wszystkie" action="showSweter"/>
 			</h:panelGrid>
-
-			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{personBean.addPerson}" />
+			
+			<br/><b><h:outputLabel>Dodaj osobę:</h:outputLabel></b>
+			<h:panelGrid columns="2">
+				<h:outputText value="Name" />
+				<h:inputText id="name2" value="#{osobaBean.osoba.firstName}"
+					required="#{true}" />
+				<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{osobaBean.addOsoba}" />
+				<h:commandButton value="Pokaż wszystkie" action="showOsoba"/>
+			</h:panelGrid>
+			
+			<br/><b><h:outputLabel>Dodaj dodatek:</h:outputLabel></b>
+			<h:panelGrid columns="2">
+				<h:outputText value="Name" />
+				<h:inputText id="name3" value="#{addonBean.addon.addonName}"
+					required="#{true}" />
+				<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{addonBean.addAddon}" />
+				<h:commandButton value="Pokaż wszystkie" action="showAddon"/>
+			</h:panelGrid>
 
 			<h:panelGrid>
 				<h:messages for="" />

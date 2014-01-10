@@ -56,11 +56,12 @@ public class SweterFormBean implements Serializable {
 	public String showDetails() {
 		sweterToShow = sweters.getRowData();
 		return "details";
+		//return null;
 	}
 	public String addSweter() {
 		sm.addSweter(sweter);
-		return "showSweter";
-		// return null;
+		//return "showSweter";
+		return null;
 	}
 
 	public String deleteSweter() {
@@ -84,4 +85,6 @@ public class SweterFormBean implements Serializable {
 		sweterToShow = sweters.getRowData();
 		return "detailsAddon";
 	}
+	/////////////////////////////////////////////////////////
+	
 }

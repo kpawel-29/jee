@@ -48,7 +48,8 @@ public class OsobaFormBean implements Serializable {
 	// Actions
 	public String addOsoba() {
 		om.addOsoba(osoba);
-		return "showOsoba";		
+		//return "showOsoba";		
+		return null;
 	}
 
 	public String deleteOsoba() {
