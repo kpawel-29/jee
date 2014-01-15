@@ -85,6 +85,8 @@ public class SweterFormBean implements Serializable {
 		sweterToShow = sweters.getRowData();
 		return "detailsAddon";
 	}
+	
+	
 	/////////////////////////////////////////////////////////
 	
 }
