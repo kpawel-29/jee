@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.faces.model.ListDataModel;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -27,9 +28,14 @@ public class OsobaManager {
 		om.persist(osoba);
 	}
 	
-
+	//set sweter free before delete osoba
 	public void deleteOsoba(Osoba osoba) {
 		osoba = om.find(Osoba.class, osoba.getId());
+		List<Sweter> ownedSweter = new ArrayList<Sweter>(getOwnedSweter(osoba));
+		for (Sweter s : ownedSweter){
+			s.setOwner(null);
+			s.setGotOwner(false);
+		}
 		om.remove(osoba);
 	}
 
@@ -62,6 +68,7 @@ public class OsobaManager {
 			osoba.getSwetry().remove(toRemove);
 		
 		sweter.setGotOwner(false);
+		sweter.setOwner(null);
 	}
 	
 	/*public Osoba getOwnedSweter(Sweter sweter) {

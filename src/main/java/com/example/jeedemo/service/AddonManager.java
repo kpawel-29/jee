@@ -34,13 +34,18 @@ public class AddonManager {
 		return addons;
 	}
 	
+	public List<Sweter> getAddonSweters(Addon addon) {
+		addon = sm.find(Addon.class, addon.getId());
+		List<Sweter> sweters = new ArrayList<Sweter>(addon.getSwetry());
+		return sweters;
+	}
+	
 	public void disposeAddon(Sweter sweter,Addon addon) {
 
 		addon = sm.find(Addon.class, addon.getId());
 		sweter = sm.find(Sweter.class, sweter.getId());
 
 		Sweter toRemove = null;
-		// lazy loading here (person.getCars)
 		for (Sweter aSweter : addon.getSwetry())
 			if (aSweter.getId().compareTo(sweter.getId()) == 0) {
 				toRemove = aSweter;
@@ -49,6 +54,7 @@ public class AddonManager {
 
 		if (toRemove != null)
 			addon.getSwetry().remove(toRemove);
+			toRemove.getAddons().remove(addon);
 	}
 
 }

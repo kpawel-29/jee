@@ -19,6 +19,9 @@ public class SweterManager {
 
 	@PersistenceContext
 	EntityManager sm;
+	
+	@Inject
+	AddonManager am;
 
 	public void addSweter(Sweter sweter) {
 		sweter.setId(null);
@@ -53,9 +56,13 @@ public class SweterManager {
 			addon.setId(null);
 			sm.persist(addon);
 		}
-	//ok
+	//usun addony ze swetra zanim usuniesz addon
 		public void deleteAddon(Addon addon) {
 			addon = sm.find(Addon.class, addon.getId());
+			//List<Sweter> sweters = new ArrayList<Sweter>(am.getAddonSweters(addon));
+			/*for (Sweter s : sweters){
+				s.setAddons(null);
+			}*/
 			sm.remove(addon);
 		}
 	//ok
