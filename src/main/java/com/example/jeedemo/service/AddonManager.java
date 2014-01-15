@@ -19,12 +19,15 @@ public class AddonManager {
 
 	@PersistenceContext
 	EntityManager sm;
-	public void connectAddon(Long sweterId, Long addonId) {
-
+	public void connectAddon(Long sweterId, Long[] addonIdTab) {
+		
 		Sweter sweter = sm.find(Sweter.class, sweterId);
-		Addon addon = sm.find(Addon.class, addonId);
-		addon.getSwetry().add(sweter);
-		sweter.getAddons().add(addon);
+		
+		for (Long l : addonIdTab){
+			Addon addon = sm.find(Addon.class, l);
+			sweter.getAddons().add(addon);
+			addon.getSwetry().add(sweter);
+		}
 	}
 	
 	public List<Addon> getSweterAddons(Sweter sweter) {

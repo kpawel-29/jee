@@ -17,14 +17,14 @@
 					<f:selectItems value="#{connectAddonBean.allSweter}" var="sweter"
 						itemValue="#{sweter.id}" itemLabel="#{sweter.name}" />
 				</h:selectOneMenu>
-			
+
 				<h:outputText value=" Dodatek " />
-				<h:selectOneMenu value="#{connectAddonBean.addonId}">
+				<h:selectManyListbox value="#{connectAddonBean.addonIdTab}">
 					<f:selectItems value="#{connectAddonBean.allAddon}" var="addon"
 						itemValue="#{addon.id}" itemLabel="#{addon.addonName}" />
-				</h:selectOneMenu>
-				
-			<h:commandButton value="Przypisz" action="#{connectAddonBean.connectAddon}" />
+				</h:selectManyListbox>
+
+				<h:commandButton value="Przypisz" action="#{connectAddonBean.connectAddon}" />
 			<h:commandButton value="Pokaż swetry" action="showOsoba"/>
 							
 			</h:panelGrid>

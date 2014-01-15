@@ -30,15 +30,17 @@ public class ConnectAddonFormBean implements Serializable {
 	@Inject
 	private AddonManager om;
 
-	private Long addonId;
+	private Long addonIdTab[];
 	private Long sweterId;
 	
-	public Long getAddonId() {
-		return addonId;
-	}
+
 	
-	public void setAddonId(Long addonId) {
-		this.addonId = addonId;
+	public Long[] getAddonIdTab() {
+		return addonIdTab;
+	}
+
+	public void setAddonIdTab(Long[] addonIdTab) {
+		this.addonIdTab = addonIdTab;
 	}
 
 	public Long getSweterId() {
@@ -58,7 +60,7 @@ public class ConnectAddonFormBean implements Serializable {
 	}
 
 	public String connectAddon() {
-		om.connectAddon(sweterId, addonId);
+		om.connectAddon(sweterId, addonIdTab);
 		//return "addSwetertoAddon";
 		return "connect";
 	}
