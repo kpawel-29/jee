@@ -5,7 +5,8 @@ body {
    font-family: Verdana, sans-serif;
    font-size: 0.9em;
 }
-	
+a:visited {color: #FFFFFF;}
+a {color: #FFFFFF;}
 
 }
 .heading {
