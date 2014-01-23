@@ -17,8 +17,8 @@
 					required="#{true}" />
 
 				<h:outputText value="#{msg.sweterSize}" />
-				<h:inputText id="size" value="#{sweterBean.sweter.size}" />
-
+				<rich:inputNumberSlider minValue="20"  maxValue="50" onmousemove="true" id="size" value="#{sweterBean.sweter.size}"/>
+				
 				<h:outputText value="#{msg.sweterColor}" />
 				<h:inputText id="color" value="#{sweterBean.sweter.color}" />
 	

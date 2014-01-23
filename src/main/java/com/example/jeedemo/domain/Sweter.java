@@ -15,7 +15,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({ 
 	@NamedQuery(name = "sweter.all", query = "Select s from Sweter s"),
-	@NamedQuery(name = "sweter.free", query = "Select s from Sweter s where s.gotOwner = false")
+	@NamedQuery(name = "sweter.free", query = "Select s from Sweter s where s.gotOwner = false"),
+	@NamedQuery(name = "sweter.size", query = "Select s from Sweter s where s.size =:sweterSize")
 })
 public class Sweter {
 

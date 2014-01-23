@@ -55,9 +55,10 @@ public class AddonManager {
 				break;
 			}
 
-		if (toRemove != null)
+		if (toRemove != null){
 			addon.getSwetry().remove(toRemove);
 			toRemove.getAddons().remove(addon);
+		}
 	}
 
 }

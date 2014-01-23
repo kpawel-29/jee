@@ -34,6 +34,7 @@ public class SweterFormBean implements Serializable {
 	private ListDataModel<Addon> sweterAddons = new ListDataModel<Addon>();
 	
 	private Sweter sweterToShow;
+	private int sweterSize;
 	
 	@Inject
 	private SweterManager sm;	
@@ -41,8 +42,16 @@ public class SweterFormBean implements Serializable {
 	private AddonManager am;
 	
 	/////////////////////////////////////////////////////
+	
+	
 	public Sweter getSweter() {
 		return sweter;
+	}
+	public int getSweterSize() {
+		return sweterSize;
+	}
+	public void setSweterSize(int sweterSize) {
+		this.sweterSize = sweterSize;
 	}
 	public void setSweter(Sweter sweter) {
 		this.sweter = sweter;
@@ -85,8 +94,16 @@ public class SweterFormBean implements Serializable {
 		sweterToShow = sweters.getRowData();
 		return "detailsAddon";
 	}
-	
-	
 	/////////////////////////////////////////////////////////
+	
+	public String getSweterWithSizeClick(){
+		sm.getSweterWithSize(sweter.getSize());
+		return "showSweterWithSize";
+	}
+	
+	public ListDataModel<Sweter> getSweterWithSize() {
+		sweters.setWrappedData(sm.getSweterWithSize(sweter.getSize()));
+		return sweters;
+	}
 	
 }

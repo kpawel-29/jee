@@ -7,7 +7,7 @@
 
 	<ui:define name="content">
 		<h:form>
-			<h:dataTable value="#{sweterBean.allSweter}" var="item">
+			<h:dataTable value="#{sweterBean.sweterWithSize}" var="item">
 				<f:facet name="header">#{msg.sweterAllLabel}</f:facet>
 				<h:column>
 					<f:facet name="header">#{msg.sweterName}</f:facet>
@@ -41,7 +41,7 @@
 					required="#{true}" />
 			</h:panelGrid>
 
-			<h:commandButton value="Wyślij" action="#{sweterBean.getSweterWithSizeClick}" />
+			<h:commandButton value="Wyślij" action="#{sweterBean.getSweterWithSize}" />
 			
 		</h:form>
 

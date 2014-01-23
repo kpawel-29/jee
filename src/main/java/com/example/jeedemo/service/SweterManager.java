@@ -59,16 +59,21 @@ public class SweterManager {
 	//usun addony ze swetra zanim usuniesz addon
 		public void deleteAddon(Addon addon) {
 			addon = sm.find(Addon.class, addon.getId());
-			//List<Sweter> sweters = new ArrayList<Sweter>(am.getAddonSweters(addon));
-			/*for (Sweter s : sweters){
-				s.setAddons(null);
+			/*List<Sweter> sweters = new ArrayList<Sweter>(am.getAddonSweters(addon));
+			for (Sweter s : sweters){
+				s.getAddons().remove(addon);
 			}*/
 			sm.remove(addon);
 		}
+		
 	//ok
 		@SuppressWarnings("unchecked")
 		public List<Addon> getAllAddon() {
 			return sm.createNamedQuery("addon.all").getResultList();
 		}
-
+		
+		@SuppressWarnings("unchecked")
+		public List<Sweter> getSweterWithSize(int sweterSize){
+			return sm.createNamedQuery("sweter.size").setParameter("sweterSize", sweterSize).getResultList();
+		}
 }
