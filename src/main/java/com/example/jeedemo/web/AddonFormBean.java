@@ -65,7 +65,8 @@ public class AddonFormBean implements Serializable {
 		//return "showAddon";
 		return null;
 	}
-	public String deleteAddon(){		
+	public String deleteAddon(){	
+		sm.deleteAddonFromSweters(addon);
 		sm.deleteAddon(addon);
 		return null;
 	}

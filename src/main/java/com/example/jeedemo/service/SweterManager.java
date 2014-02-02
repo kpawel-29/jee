@@ -32,6 +32,15 @@ public class SweterManager {
 		sweter = sm.find(Sweter.class, sweter.getId());
 		sm.remove(sweter);
 	}
+	
+	public void deleteSweterFromOsoba(Sweter sweter){
+		sweter = sm.find(Sweter.class, sweter.getId());
+		List<Osoba> osoby = sm.createNamedQuery("osoba.all").getResultList();
+		for (Osoba osoba : osoby) {
+			osoba = sm.find(Osoba.class, osoba.getId());
+			osoba.getSwetry().remove(sweter);
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Sweter> getAllSweter() {
@@ -59,11 +68,15 @@ public class SweterManager {
 	//usun addony ze swetra zanim usuniesz addon
 		public void deleteAddon(Addon addon) {
 			addon = sm.find(Addon.class, addon.getId());
-			/*List<Sweter> sweters = new ArrayList<Sweter>(am.getAddonSweters(addon));
-			for (Sweter s : sweters){
-				s.getAddons().remove(addon);
-			}*/
 			sm.remove(addon);
+		}
+		public void deleteAddonFromSweters(Addon addon){
+			addon = sm.find(Addon.class, addon.getId());
+			List<Sweter> sweters = sm.createNamedQuery("sweter.all").getResultList();
+			for (Sweter sweter : sweters){
+				sweter = sm.find(Sweter.class, sweter.getId());
+				sweter.getAddons().remove(addon);
+			}
 		}
 		
 	//ok

@@ -75,7 +75,9 @@ public class SweterFormBean implements Serializable {
 
 	public String deleteSweter() {
 		Sweter sweterToDelete = sweters.getRowData();
+		sm.deleteSweterFromOsoba(sweterToDelete);
 		sm.deleteSweter(sweterToDelete);
+		
 		return null;
 	}
 	/////////////////////////////////////////////////////////

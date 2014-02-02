@@ -8,7 +8,7 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 	<ui:define name="content">
-		<h:form id="addForm">
+		<h:form id="addSweter">
 			
 			<b><h:outputLabel>Dodaj sweter:</h:outputLabel></b>
 			<h:panelGrid columns="2">
@@ -25,6 +25,15 @@
 				<h:commandButton value="#{msg.personFormOKButton}" action="#{sweterBean.addSweter}" />
 				<h:commandButton value="Pokaż wszystkie" action="showSweter"/>
 			</h:panelGrid>
+			
+			<h:panelGrid>
+				<h:messages for="" />
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+
+		</h:form>
+		<h:form id="addOsoba">
 			
 			<br/><b><h:outputLabel>Dodaj osobę:</h:outputLabel></b>
 			<h:panelGrid columns="2">
@@ -44,6 +53,16 @@
 				<h:commandButton value="Pokaż wszystkie" action="showOsoba"/>
 				
 			</h:panelGrid>
+		</h:form>
+			<h:panelGrid>
+				<h:messages for="" />
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+
+		
+		<h:form id="addAddon">
+			
 			
 			<br/><b><h:outputLabel>Dodaj dodatek:</h:outputLabel></b>
 			<h:panelGrid columns="2">
