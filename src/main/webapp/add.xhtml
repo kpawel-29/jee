@@ -14,7 +14,7 @@
 			<h:panelGrid columns="2">
 				<h:outputText value="#{msg.sweterName}" />
 				<h:inputText id="name" value="#{sweterBean.sweter.name}"
-					required="#{true}" />
+					required="#{true}"  />
 
 				<h:outputText value="#{msg.sweterSize}" />
 				<rich:inputNumberSlider minValue="20"  maxValue="50" onmousemove="true" id="size" value="#{sweterBean.sweter.size}"/>
@@ -31,9 +31,18 @@
 				<h:outputText value="Name" />
 				<h:inputText id="name2" value="#{osobaBean.osoba.firstName}"
 					required="#{true}" />
+				
+				<h:outputText value="e-mail" />
+				<h:inputText id="email" value="#{osobaBean.osoba.email}"
+					validator="#{osobaBean.uniqueEmail}" required="#{true}">
+					<f:validator validatorId="emailValidator" />
+					<a4j:ajax event="keyup" execute="@this" render="messages beanState" />
+				</h:inputText>
+				
 				<h:commandButton value="#{msg.personFormOKButton}"
 				action="#{osobaBean.addOsoba}" />
 				<h:commandButton value="Pokaż wszystkie" action="showOsoba"/>
+				
 			</h:panelGrid>
 			
 			<br/><b><h:outputLabel>Dodaj dodatek:</h:outputLabel></b>

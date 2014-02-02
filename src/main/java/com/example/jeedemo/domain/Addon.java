@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,11 +44,9 @@ public class Addon {
 	public void setAddonName(String addonName) {
 		this.addonName = addonName;
 	}
-//zamienione miejscami wzgledem przykladu addon_id i sweter_id
-	@ManyToMany(cascade = {CascadeType.ALL})
-	@JoinTable(name="SWETER_ADDON", 
-				joinColumns={@JoinColumn(name="ADDON_ID")},
-				inverseJoinColumns={@JoinColumn(name="SWETER_ID")})
+
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@JoinTable(name="sweter_addon")
 	public List<Sweter> getSwetry() {
 		return swetry;
 	}

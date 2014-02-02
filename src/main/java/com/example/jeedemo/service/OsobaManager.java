@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -71,12 +73,6 @@ public class OsobaManager {
 		sweter.setOwner(null);
 	}
 	
-	/*public Osoba getOwnedSweter(Sweter sweter) {
-		sweter = om.find(Sweter.class, sweter.getId());
-		
-		Osoba osoba = new Osoba();
-		osoba = sweter.getOwner();
-		return osoba;
-	}*/
+	
 
 }

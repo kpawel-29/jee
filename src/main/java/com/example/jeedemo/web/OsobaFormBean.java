@@ -3,6 +3,8 @@ package com.example.jeedemo.web;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -10,9 +12,18 @@ import javax.inject.Named;
 import com.example.jeedemo.domain.Addon;
 import com.example.jeedemo.domain.Osoba;
 import com.example.jeedemo.domain.Osoba;
+import com.example.jeedemo.domain.Person;
 import com.example.jeedemo.domain.Sweter;
 import com.example.jeedemo.service.OsobaManager;
 import com.example.jeedemo.service.SweterManager;
+
+
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.FacesValidator;
+import javax.faces.validator.Validator;
+import javax.faces.validator.ValidatorException;
 
 @SessionScoped
 @Named("osobaBean")
@@ -73,41 +84,20 @@ public class OsobaFormBean implements Serializable {
 		return null;
 	}
 	
-	
-	
-	
-	/*private Osoba osoba = new Osoba();
-	private ListDataModel<Osoba> osoby = new ListDataModel<Osoba>();
+	// Validators
 
-	@Inject
-	private OsobaManager om;
+			// Business logic validation
+			public void uniqueEmail(FacesContext context, UIComponent component,
+					Object value) {
 
-	
-	public Osoba getOsoba() {
-		return osoba;
-	}
-
-	public void setOsoba(Osoba osoba) {
-		this.osoba = osoba;
-	}
-
-	public ListDataModel<Osoba> getAllOsoba() {
-		osoby.setWrappedData(om.getAllOsoba());
-		return osoby;
-	}
-
-	// Actions
-	public String addOsoba() {
-		
-		om.addOsoba(osoba);
-
-		return "showOsoba";
-		// return null;
-	}
-
-	public String deleteOsoba() {
-		Osoba osobaToDelete = osoby.getRowData();
-		om.deleteOsoba(osobaToDelete);
-		return null;
-	}*/
+				String email = (String) value;
+				
+				for (Osoba osoba : om.getAllOsoba()){
+					if (osoba.getEmail().equalsIgnoreCase(email)) {
+						FacesMessage message = new FacesMessage("email zajęty");
+						message.setSeverity(FacesMessage.SEVERITY_ERROR);
+						throw new ValidatorException(message);
+					}
+				}
+			}
 }

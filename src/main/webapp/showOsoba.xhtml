@@ -14,6 +14,10 @@
 					<h:outputText value="#{item.firstName}" />
 				</h:column>
 				<h:column>
+					<f:facet name="header">Email</f:facet>
+					<h:outputText value="#{item.email}" />
+				</h:column>
+				<h:column>
 					<f:facet name="header">#{msg.action}</f:facet>
 					<h:commandLink value="#{msg.actionDelete}"
 						action="#{osobaBean.deleteOsoba}" />
