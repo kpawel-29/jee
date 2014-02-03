@@ -23,7 +23,7 @@ import javax.persistence.NamedQuery;
 public class Addon {
 
 	private Long id;
-	private String addonName  ="kieszenie";
+	private String addonName  ="kieszeń";
 	
 	private List<Sweter> swetry = new ArrayList<Sweter>();
 

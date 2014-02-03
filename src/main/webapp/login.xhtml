@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="content">
+	
+	<b><h:outputLabel>Logowanie:</h:outputLabel></b>
+	<form method="post" action="j_security_check">
+		<p>
+			Login: <input type="text" name="j_username" />
+		</p>
+		<p>
+			Hasło: <input type="password" name="j_password" />
+		</p>
+		<p>
+			<input type="submit" value=" Login " />
+		</p>
+	</form>
+
+	</ui:define>
+</ui:composition>
+
+

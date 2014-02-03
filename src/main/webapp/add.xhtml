@@ -17,7 +17,9 @@
 					required="#{true}"  />
 
 				<h:outputText value="#{msg.sweterSize}" />
-				<rich:inputNumberSlider minValue="20"  maxValue="50" onmousemove="true" id="size" value="#{sweterBean.sweter.size}"/>
+				<rich:inputNumberSlider minValue="20"  maxValue="50" onmousemove="true"
+				id="size" value="#{sweterBean.sweter.size}" showArrows="true"/>
+								
 				
 				<h:outputText value="#{msg.sweterColor}" />
 				<h:inputText id="color" value="#{sweterBean.sweter.color}" />
@@ -26,12 +28,6 @@
 				<h:commandButton value="Pokaż wszystkie" action="showSweter"/>
 			</h:panelGrid>
 			
-			<h:panelGrid>
-				<h:messages for="" />
-				<h:messages id="messages" showDetail="#{true}"
-					showSummary="#{false}" />
-			</h:panelGrid>
-
 		</h:form>
 		<h:form id="addOsoba">
 			
@@ -54,12 +50,7 @@
 				
 			</h:panelGrid>
 		</h:form>
-			<h:panelGrid>
-				<h:messages for="" />
-				<h:messages id="messages" showDetail="#{true}"
-					showSummary="#{false}" />
-			</h:panelGrid>
-
+			
 		
 		<h:form id="addAddon">
 			

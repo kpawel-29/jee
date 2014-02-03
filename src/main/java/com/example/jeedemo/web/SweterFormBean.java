@@ -32,6 +32,8 @@ public class SweterFormBean implements Serializable {
 	
 	private ListDataModel<Osoba> sweterOwner = new ListDataModel<Osoba>();
 	private ListDataModel<Addon> sweterAddons = new ListDataModel<Addon>();
+	private Sweter sweterToEdit;
+	
 	
 	private Sweter sweterToShow;
 	private int sweterSize;
@@ -46,6 +48,12 @@ public class SweterFormBean implements Serializable {
 	
 	public Sweter getSweter() {
 		return sweter;
+	}
+	public Sweter getSweterToEdit() {
+		return sweterToEdit;
+	}
+	public void setSweterToEdit(Sweter sweterToEdit) {
+		this.sweterToEdit = sweterToEdit;
 	}
 	public int getSweterSize() {
 		return sweterSize;
@@ -107,5 +115,18 @@ public class SweterFormBean implements Serializable {
 		sweters.setWrappedData(sm.getSweterWithSize(sweter.getSize()));
 		return sweters;
 	}
+	
+	public String editSweter(){
+		sweterToEdit = sweters.getRowData();
+		sweterAddons.setWrappedData(am.getSweterAddons(sweterToEdit));
+		//sm.editSweter(sweterToEdit);
+		return "editSweter";
+	}
+	
+	public String editSweterZatwierdz(){
+		sm.editSweter(sweterToEdit);
+		return "editSweter";
+	}
+	
 	
 }

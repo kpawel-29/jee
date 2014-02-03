@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<ui:define name="content">
+	<h:form id="editSweter">
+		<b><h:outputLabel>Edytuj sweter:</h:outputLabel></b>
+			<h:panelGrid columns="2">
+				<h:outputText value="#{msg.sweterName}" />
+				<h:inputText id="name" value="#{sweterBean.sweterToEdit.name}"
+					required="#{true}"  />
+
+				<h:outputText value="#{msg.sweterSize}" />
+				<rich:inputNumberSlider minValue="20"  maxValue="50" onmousemove="true" 
+				id="size" value="#{sweterBean.sweterToEdit.size}"/>
+				
+				<h:outputText value="#{msg.sweterColor}" />
+				<h:inputText id="color" value="#{sweterBean.sweterToEdit.color}" />
+	
+				<h:commandButton value="#{msg.personFormOKButton}" action="#{sweterBean.editSweterZatwierdz}" />
+				<h:commandButton value="Pokaż wszystkie" action="showSweter"/>
+			</h:panelGrid>
+		</h:form>
+		
+		<h:form id="formAddonEdit">
+		<br/><h:outputLabel><b>Przypisz dodatek do swetra:</b></h:outputLabel>
+			<h:panelGrid columns="2">
+		
+				<h:outputText value=" Dodatek " />
+				<h:selectManyListbox value="#{connectAddonBean.addonIdTab}">
+					<f:selectItems value="#{connectAddonBean.allAddon}" var="addon"
+						itemValue="#{addon.id}" itemLabel="#{addon.addonName}" />
+				</h:selectManyListbox>
+
+				<h:commandButton value="Edytuj" action="#{connectAddonBean.connectAddon}" />
+			<h:commandButton value="Pokaż swetry" action="showOsoba"/>
+							
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

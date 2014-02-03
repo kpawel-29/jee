@@ -73,6 +73,9 @@ public class OsobaManager {
 		sweter.setOwner(null);
 	}
 	
+	public void editOsoba(Osoba osoba){
+		om.merge(osoba);
+	}
 	
 
 }

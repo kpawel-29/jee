@@ -61,11 +61,8 @@ public class AddonManager {
 		}
 	}
 
+	public void editAddon(Addon addon){
+		sm.merge(addon);
+	}
 }
-/*	public List<Sweter> getSweterAddon(Addon addon) {
-addon = om.find(Addon.class, addon.getId());
-// lazy loading here - try this code without this (shallow) copying
-List<Sweter> sweters = new ArrayList<Sweter>(addon.getSwetry());
-return sweters;
-}*/
 

@@ -29,6 +29,7 @@
 					<h:commandLink value="#{msg.actionDelete}"
 						action="#{sweterBean.deleteSweter}" />
 					<h:commandLink value=" Dodatki" action="#{sweterBean.showAddonDetails}"/>
+					<h:commandLink value=" Edytuj" action="#{sweterBean.editSweter}"/>
 				</h:column>
 
 			</h:dataTable>
@@ -41,7 +42,7 @@
 					required="#{true}" />
 			</h:panelGrid>
 
-			<h:commandButton value="Wyślij" action="#{sweterBean.getSweterWithSize}" />
+			<h:commandButton value="Wyślij" action="#{sweterBean.getSweterWithSizeClick}" />
 			
 		</h:form>
 

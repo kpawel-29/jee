@@ -29,7 +29,7 @@ public class AddonFormBean implements Serializable {
 	private ListDataModel<Addon> addons = new ListDataModel<Addon>();
 	
 	private ListDataModel<Addon> sweterAddons = new ListDataModel<Addon>();
-	
+	private Addon addonToEdit;
 	private Sweter sweterToShow;
 	private Addon addonToShow;
 
@@ -38,6 +38,26 @@ public class AddonFormBean implements Serializable {
 	@Inject
 	private AddonManager om;
 		
+	private Long addonIdTab[];
+	
+	
+
+	
+	public Long[] getAddonIdTab() {
+		return addonIdTab;
+	}
+
+	public void setAddonIdTab(Long[] addonIdTab) {
+		this.addonIdTab = addonIdTab;
+	}
+
+
+	public Addon getAddonToEdit() {
+		return addonToEdit;
+	}
+	public void setAddonToEdit(Addon addonToEdit) {
+		this.addonToEdit = addonToEdit;
+	}
 	public Addon getAddon() {
 		return addon;
 	}
@@ -69,6 +89,16 @@ public class AddonFormBean implements Serializable {
 		sm.deleteAddonFromSweters(addon);
 		sm.deleteAddon(addon);
 		return null;
+	}
+	
+	public String editAddon(){
+		addonToEdit=sweterAddons.getRowData();
+		return "editAddon";
+	}
+	
+	public String editAddonZatwierdz(){
+		om.editAddon(addonToEdit);
+		return "editAddon";
 	}
 
 }

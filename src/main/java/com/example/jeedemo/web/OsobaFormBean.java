@@ -37,6 +37,7 @@ public class OsobaFormBean implements Serializable {
 	private Osoba osobaToShow = new Osoba();
 	private ListDataModel<Sweter> ownedSweter = new ListDataModel<Sweter>();
 
+	private Osoba osobaToEdit;
 
 	@Inject
 	private OsobaManager om;
@@ -44,6 +45,13 @@ public class OsobaFormBean implements Serializable {
 	@Inject
 	private SweterManager sm;
 
+	
+	public Osoba getOsobaToEdit() {
+		return osobaToEdit;
+	}
+	public void setOsobaToEdit(Osoba osobaToEdit) {
+		this.osobaToEdit = osobaToEdit;
+	}
 	public Osoba getOsoba() {
 		return osoba;
 	}
@@ -84,6 +92,17 @@ public class OsobaFormBean implements Serializable {
 		return null;
 	}
 	
+	public String editOsoba(){
+		osobaToEdit = osoby.getRowData();
+		return "editOsoba";
+	}
+	
+	public String editOsobaZatwierdz(){
+		om.editOsoba(osobaToEdit);
+		return "editOsoba";
+	}
+	
+	
 	// Validators
 
 			// Business logic validation
@@ -100,4 +119,6 @@ public class OsobaFormBean implements Serializable {
 					}
 				}
 			}
+			
+	
 }

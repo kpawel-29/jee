@@ -8,24 +8,33 @@
 	xmlns:rich="http://richfaces.org/rich">
 
 	<ui:define name="content">
-		<h:form id="osobaForm">
+	<h:form id="editSweter">
+		<b><h:outputLabel>Edytuj osobę:</h:outputLabel></b>
 			<h:panelGrid columns="2">
-
 				<h:outputText value="Name" />
-				<h:inputText id="name" value="#{osobaBean.osoba.firstName}"
+				<h:inputText id="name2" value="#{osobaBean.osobaToEdit.firstName}"
 					required="#{true}" />
+				
+				<h:outputText value="e-mail" />
+				<h:inputText id="email" value="#{osobaBean.osobaToEdit.email}"
+					required="#{true}">
+					<f:validator validatorId="emailValidator" />
+					<a4j:ajax event="keyup" execute="@this" render="messages beanState" />
+				</h:inputText>
+				
+				<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{osobaBean.editOsobaZatwierdz}" />
+				<h:commandButton value="Pokaż wszystkie" action="showOsoba"/>
+				
 			</h:panelGrid>
-
-			<h:commandButton value="#{msg.personFormOKButton}"
-				action="#{osobaBean.addOsoba}" />
-
 			<h:panelGrid>
 				<h:messages for="" />
 				<h:messages id="messages" showDetail="#{true}"
 					showSummary="#{false}" />
 			</h:panelGrid>
-
 		</h:form>
+		
+	
 
 	</ui:define>
 </ui:composition>

@@ -89,4 +89,9 @@ public class SweterManager {
 		public List<Sweter> getSweterWithSize(int sweterSize){
 			return sm.createNamedQuery("sweter.size").setParameter("sweterSize", sweterSize).getResultList();
 		}
+		
+		public void editSweter(Sweter sweter){
+			sm.merge(sweter);
+		}
+
 }
